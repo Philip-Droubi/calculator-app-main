@@ -7,17 +7,13 @@ let scrollBarVisible = false;
 screenScroll();
 
 function screenScroll() {
-    console.log(screen.clientWidth);
-
     if (screenOutput.clientWidth >= (screen.clientWidth * 88.1481 / 100) && !scrollBarVisible) {
         screenOutput.style.overflowX = 'scroll';
         scrollBarVisible = true;
-        console.log('visi');
 
     } else if (screenOutput.clientWidth < (screen.clientWidth * 88.1481 / 100) && scrollBarVisible) {
         screenOutput.style.overflowX = 'hidden';
         scrollBarVisible = false;
-        console.log('hide');
     }
 }
 
@@ -98,7 +94,6 @@ function moveBall(mode) {
     }
 }
 
-
-let info = document.querySelector('.info');
-info.innerHTML = window.innerHeight;
-document.querySelector('.padding').innerHTML = getComputedStyle(document.body).padding
+if (window.innerHeight < parseInt(getComputedStyle(document.body).height)) {
+    document.body.style.setProperty('min-height', `${window.innerHeight}px`);
+}// this condition will fix the body height for some mobile devices.
