@@ -142,7 +142,7 @@ nav {
 }
 
 .theme p {
-    align-self: end;
+    align-self: flex-end;
     margin-bottom: 6px;
     letter-spacing: 0.5px;
 }
@@ -358,6 +358,10 @@ footer {
 }
 
 @media (max-width:1024px) {
+    body {
+        padding: 10px 0;
+    }
+
     nav {
         margin-bottom: 14px;
     }
