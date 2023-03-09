@@ -97,3 +97,8 @@ function moveBall(mode) {
             break;
     }
 }
+
+
+let info = document.querySelector('.info');
+info.innerHTML = window.innerHeight;
+document.querySelector('.padding').innerHTML = getComputedStyle(document.body).padding
