@@ -189,18 +189,23 @@ function endMouseClick(ele) {
 
 function UrlExists(url) {
     var http = new XMLHttpRequest();
-    http.open('HEAD', url, false);
-    http.send();
-    if (http.status != 404)
-        return true;
-    else
+    http.open('HEAD', url, true);
+    try {
+        http.send();
+        if (http.status != 404)
+            return true;
+        else
+            return false;
+    } catch (error) {
+        console.log(error);
         return false;
+    }
 }
 
 function playSound() {
     if (!soundOn) {
         let url;
-        if (herf == 'philip-droubi.github.io') {
+        if (herf == 'philip-droubi.github.io' && navigator.onLine) {
             url = '/calculator-app-main/sounds/click.mp3'
             if (UrlExists(url)) {
                 btnSound = new Audio(url);
