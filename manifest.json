@@ -10,17 +10,17 @@
     "orientation": "portrait-primary",
     "icons": [
         {
-            "src": "/images/calc-128.png",
+            "src": "/calculator-app-main/images/calc-128.png",
             "type": "image/png",
             "sizes": "128x128"
         },
         {
-            "src": "/images/calc-192.png",
+            "src": "/calculator-app-main/images/calc-192.png",
             "type": "image/png",
             "sizes": "192x192"
         },
         {
-            "src": "/images/calc-512.png",
+            "src": "/calculator-app-main/images/calc-512.png",
             "type": "image/png",
             "sizes": "512x512"
         }

@@ -1,10 +1,11 @@
 const calculatorApp = "calculator-v1";
+const link = "/calculator-app-main";
 const assets = [
-    "/",
-    "/index.html",
-    "/CSS/main.css",
-    "/JS/main.js",
-    "/images/favicon-32x32.png",
+    `${link}/`,
+    `${link}/index.html`,
+    `${link}/CSS/main.css`,
+    `${link}/JS/main.js`,
+    `${link}/images/favicon-32x32.png`,
 ];
 
 self.addEventListener("install", installEvent => {
