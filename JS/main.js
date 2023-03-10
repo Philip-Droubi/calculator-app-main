@@ -121,16 +121,18 @@ function changeTheme() {
 
 window.addEventListener('keydown', e => clickBtn(e));
 window.addEventListener('keyup', e => endClickBtn(e));
-window.addEventListener('touchstart', e => clickBtn(e));
-window.addEventListener('touchend', e => endClickBtn(e));
-window.addEventListener('touchcancel', e => endClickBtn(e));
+// window.addEventListener('touchstart', e => testTouch(e));
+// window.addEventListener('click', e => clickBtn(e));
+// window.addEventListener('touchend', e => endMouseClick(e));
+// window.addEventListener('touchcancel', e => endMouseClick(e));
 window.addEventListener('mousedown', e => mouseClick(e.target));
-window.addEventListener('mouseup', e => e.target.classList.remove('clicked'));
+// window.addEventListener('touchstart', e => touchClick(e.target));
+window.addEventListener('mouseup', e => endMouseClick(e.target));
 window.addEventListener('mouseout', e => e.target.classList.remove('clicked'));
 
 function clickBtn(e) {
     let key = e.key;
-    let btn;
+    console.log(key);
     if (acceptedBtns.includes(key)) {
         if (!soundOn) {
             if (herf == 'philip-droubi.github.io') {
@@ -151,6 +153,7 @@ function clickBtn(e) {
             || key == 'PageDown'
             || key == 't'
             || key == 'T' ? changeThemeByKey() : null;
+        // document.querySelector('.info').innerHTML = 4545;
     }
 }
 
@@ -178,9 +181,39 @@ function endClickBtn(e) {
 
 function mouseClick(ele) {
     if (ele.tagName == 'BUTTON' && ele.id != 'themeSwitcher') {
+        // if (!window.matchMedia("(pointer: coarse)").matches) {
         ele.classList.add('clicked');
+        if (herf == 'philip-droubi.github.io') {
+            btnSound = new Audio('/calculator-app-main/sounds/click.mp3');
+        } else
+            btnSound = new Audio('../sounds/click.mp3');
         btnSound.play();
+        // }
     }
 }
+
+// function touchClick(ele) {
+//     if (ele.tagName == 'BUTTON' && ele.id != 'themeSwitcher') {
+//         if (window.matchMedia("(pointer: coarse)").matches) {
+//             ele.classList.add('clicked');
+//             if (herf == 'philip-droubi.github.io') {
+//                 btnSound = new Audio('/calculator-app-main/sounds/click.mp3');
+//             } else
+//                 btnSound = new Audio('../sounds/click.mp3');
+//             btnSound.play();
+//         }
+//     }
+// }
+
+function endMouseClick(ele) {
+    if (window.matchMedia("(pointer: coarse)").matches) {
+        setTimeout(() => {
+            ele.classList.remove('clicked');
+        }, 240);
+    } else {
+        ele.classList.remove('clicked');
+    }
+}
+
 
 // LOGIC
