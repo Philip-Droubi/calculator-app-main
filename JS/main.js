@@ -133,7 +133,7 @@ function clickBtn(e) {
     let btn;
     if (acceptedBtns.includes(key)) {
         if (!soundOn) {
-            if (herf == 'github.com') {
+            if (herf == 'philip-droubi.github.io') {
                 btnSound = new Audio('/calculator-app-main/sounds/click.mp3');
             } else
                 btnSound = new Audio('../sounds/click.mp3');
