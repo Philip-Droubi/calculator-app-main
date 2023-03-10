@@ -15,6 +15,9 @@ let screenOutput = document.querySelector('.screen .output');
 let screen = document.querySelector('.screen');
 let scrollBarVisible = false;
 let themeWork = true;
+// let btnSound = new Audio('../sounds/click.mp3');
+let soundOn = false;
+let acceptedBtns = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '-', '/', '*', '.', 'Enter', '=', 'Delete', 'Backspace'];
 
 if (window.innerHeight < parseInt(getComputedStyle(document.body).height)) {
     document.body.style.setProperty('min-height', `${window.innerHeight}px`);
@@ -127,17 +130,24 @@ window.addEventListener('mouseout', e => e.target.classList.remove('clicked'));
 
 function clickBtn(e) {
     let key = e.key;
-    key == '=' ? key = 'Enter' : key;
-    let ele = document.getElementById(`${key}`);
-    if (ele) ele.classList.add('clicked');
-    key == 'm' || key == 'ArrowRight'
-        || key == 'ArrowLeft'
-        || key == 'ArrowUp'
-        || key == 'ArrowDown'
-        || key == 'PageUp'
-        || key == 'PageDown'
-        || key == 't'
-        || key == 'T' ? changeThemeByKey() : null;
+    if (acceptedBtns.includes(key)) {
+        if (!soundOn) {
+            let btnSound = new Audio('../sounds/click.mp3');
+            btnSound.play();
+            soundOn = true;
+        }
+        key == '=' ? key = 'Enter' : key;
+        let ele = document.getElementById(`${key}`);
+        if (ele) ele.classList.add('clicked');
+        key == 'm' || key == 'ArrowRight'
+            || key == 'ArrowLeft'
+            || key == 'ArrowUp'
+            || key == 'ArrowDown'
+            || key == 'PageUp'
+            || key == 'PageDown'
+            || key == 't'
+            || key == 'T' ? changeThemeByKey() : null;
+    }
 }
 
 function changeThemeByKey() {
@@ -155,6 +165,7 @@ function releseTheme() {
 }
 
 function endClickBtn(e) {
+    soundOn = false;
     let key = e.key;
     key == '=' ? key = 'Enter' : key;
     let ele = document.getElementById(`${key}`);
@@ -164,6 +175,7 @@ function endClickBtn(e) {
 function mouseClick(ele) {
     if (ele.tagName == 'BUTTON' && ele.id != 'themeSwitcher') {
         ele.classList.add('clicked');
+        btnSound.play();
     }
 }
 
