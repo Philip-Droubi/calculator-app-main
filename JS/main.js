@@ -205,11 +205,11 @@ function UrlExists(url) {
 function playSound() {
     if (!soundOn) {
         let url;
-        if (herf == 'philip-droubi.github.io' && navigator.onLine) {
+        if (herf == 'philip-droubi.github.io') {
             url = '/calculator-app-main/sounds/click.mp3'
-            if (UrlExists(url)) {
-                btnSound = new Audio(url);
-            }
+            // if (UrlExists(url)) {
+            btnSound = new Audio(url);
+            // }
         } else {
             btnSound = new Audio('../sounds/click.mp3');
         }
