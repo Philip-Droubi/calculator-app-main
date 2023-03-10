@@ -77,6 +77,7 @@
     margin: 0;
     list-style: none;
     text-decoration: none;
+    user-select: none;
 }
 
 button {
@@ -196,6 +197,7 @@ nav {
     padding-right: 32px;
     padding-left: 32px;
     margin-bottom: 24px;
+    user-select: all !important;
 }
 
 .screen .output {
@@ -204,6 +206,7 @@ nav {
     letter-spacing: -0.4px;
     overflow-x: hidden;
     margin-top: 5px;
+    user-select: all !important;
 }
 
 .screen .output::-webkit-scrollbar {
@@ -289,9 +292,9 @@ nav {
     text-transform: lowercase;
 }
 
-.clicked button {
-    margin-top: 4px !important;
-    box-shadow: 0 0 0 0 transparent !important;
+.clicked {
+    transform: translateY(4px);
+    box-shadow: 0 0px 0 0 var(--nums-shadow) !important;
 }
 
 footer {
@@ -390,7 +393,7 @@ footer {
     }
 
     .calculatorBody ul li button {
-        height: 54px;
+        height: 56px;
         font-size: 34px;
     }
 

@@ -7,6 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
   <meta name='designer' content='Philip Droubi'>
+  <link rel="manifest" href="manifest.json" />
+  <!-- ios support -->
+  <link rel="apple-touch-icon" href="images/icon-128.png" />
+  <link rel="apple-touch-icon" href="images/icon-192.png" />
+  <link rel="apple-touch-icon" href="images/icon-512.png" />
+  <meta name="apple-mobile-web-app-status-bar" content="#3a4764" />
+  <meta name="theme-color" content="#232c43" />
+  <!-- end ios support -->
   <link rel="stylesheet" href="CSS/main.css">
   <title>Frontend Mentor | calculator-app-main</title>
 </head>
@@ -25,7 +33,7 @@
             <li>2</li>
             <li>3</li>
           </ul>
-          <button aria-label="theme-switch">
+          <button aria-label="theme-switch" id="themeSwitcher">
             <div class="ball"></div>
           </button>
         </div>
@@ -36,24 +44,24 @@
     </div>
     <div class="calculatorBody">
       <ul>
-        <li><button aria-label="7">7</button></li>
-        <li><button aria-label="8">8</button></li>
-        <li><button aria-label="9">9</button></li>
-        <li class="del"><button aria-label="Delete">Del</button></li>
-        <li><button aria-label="4">4</button></li>
-        <li><button aria-label="5">5</button></li>
-        <li><button aria-label="6">6</button></li>
-        <li><button aria-label="+">+</button></li>
-        <li><button aria-label="1">1</button></li>
-        <li><button aria-label="2">2</button></li>
-        <li><button aria-label="3">3</button></li>
-        <li><button aria-label="-">-</button></li>
-        <li><button aria-label=".">.</button></li>
-        <li><button aria-label="0">0</button></li>
-        <li><button aria-label="division">/</button></li>
-        <li class="mult"><button aria-label="multiply">x</button></li>
-        <li class="reset"><button aria-label="reset">reset</button></li>
-        <li class="eq"><button aria-label="equal">=</button></li>
+        <li><button aria-label="7" id="7">7</button></li>
+        <li><button aria-label="8" id="8">8</button></li>
+        <li><button aria-label="9" id="9">9</button></li>
+        <li class="del"><button aria-label="Delete" id="Backspace">Del</button></li>
+        <li><button aria-label="4" id="4">4</button></li>
+        <li><button aria-label="5" id="5">5</button></li>
+        <li><button aria-label="6" id="6">6</button></li>
+        <li><button aria-label="+" id="+">+</button></li>
+        <li><button aria-label="1" id="1">1</button></li>
+        <li><button aria-label="2" id="2">2</button></li>
+        <li><button aria-label="3" id="3">3</button></li>
+        <li><button aria-label="-" id="-">-</button></li>
+        <li><button aria-label="." id=".">.</button></li>
+        <li><button aria-label="0" id="0">0</button></li>
+        <li><button aria-label="division" id="/">/</button></li>
+        <li class="mult"><button aria-label="multiply" id="*">x</button></li>
+        <li class="reset"><button aria-label="reset" id="Delete">reset</button></li>
+        <li class="eq"><button aria-label="equal" id="Enter">=</button></li>
       </ul>
     </div>
   </main>

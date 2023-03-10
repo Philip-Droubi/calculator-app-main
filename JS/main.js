@@ -1,9 +1,24 @@
-// ControlScrollBar
+//PWA
+
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+        navigator.serviceWorker
+            .register("/serviceWorker.js")
+            .then(res => console.log("service worker registered"))
+            .catch(err => console.log("service worker not registered", err))
+    });
+}
+
+// ControlScrollBar + init
 
 let screenOutput = document.querySelector('.screen .output');
 let screen = document.querySelector('.screen');
 let scrollBarVisible = false;
+let themeWork = true;
 
+if (window.innerHeight < parseInt(getComputedStyle(document.body).height)) {
+    document.body.style.setProperty('min-height', `${window.innerHeight}px`);
+}// this condition will fix the body height for some mobile devices.
 screenScroll();
 
 function screenScroll() {
@@ -17,14 +32,40 @@ function screenScroll() {
     }
 }
 
-// ControlColors
+window.addEventListener('keypress', e => {
+    if (e.key == 'Enter') e.preventDefault();
+});//this is needed because if u change theme then press ENTER it will change the theme again.
+
+// Control Themes
 
 let themeSwitch = document.querySelector('.switch button');
 let ball = document.querySelector('.ball');
 let root = document.querySelector(':root');
 let mode = 1
 
-themeSwitch.addEventListener('click', () => {
+themeSwitch.addEventListener('click', changeTheme);
+
+function moveBall(mode) {
+    switch (mode) {
+        case 1:
+        case 0:
+            ball.style.left = '4px';
+            ball.style.transform = 'translateX(0)';
+            break;
+        case 2:
+            ball.style.left = '50%';
+            ball.style.transform = 'translateX(-50%)';
+            break;
+        case 3:
+            ball.style.left = 'calc(100% - 20px)';
+            ball.style.transform = 'translateX(0)';
+            break;
+        default:
+            break;
+    }
+}
+
+function changeTheme() {
     mode++;
     if (mode == 4) mode = 1;
     switch (mode) {
@@ -66,34 +107,64 @@ themeSwitch.addEventListener('click', () => {
             root.style.setProperty('--nums-shadow', 'var(--Dark-magenta-key-shadow)');
             root.style.setProperty('--reset-del-background', 'var(--Dark-violet-key-background)');
             root.style.setProperty('--reset-del-shadow', 'var(--Vivid-magenta-key-shadow)');
-
             break;
         default:
             break;
     }
     moveBall(mode);
-});
+}
 
-function moveBall(mode) {
-    switch (mode) {
-        case 1:
-        case 0:
-            ball.style.left = '4px';
-            ball.style.transform = 'translateX(0)';
-            break;
-        case 2:
-            ball.style.left = '50%';
-            ball.style.transform = 'translateX(-50%)';
-            break;
-        case 3:
-            ball.style.left = 'calc(100% - 20px)';
-            ball.style.transform = 'translateX(0)';
-            break;
-        default:
-            break;
+//React with keypad
+
+window.addEventListener('keydown', e => clickBtn(e));
+window.addEventListener('keyup', e => endClickBtn(e));
+window.addEventListener('touchstart', e => clickBtn(e));
+window.addEventListener('touchend', e => endClickBtn(e));
+window.addEventListener('touchcancel', e => endClickBtn(e));
+window.addEventListener('mousedown', e => mouseClick(e.target));
+window.addEventListener('mouseup', e => e.target.classList.remove('clicked'));
+window.addEventListener('mouseout', e => e.target.classList.remove('clicked'));
+
+function clickBtn(e) {
+    let key = e.key;
+    key == '=' ? key = 'Enter' : key;
+    let ele = document.getElementById(`${key}`);
+    if (ele) ele.classList.add('clicked');
+    key == 'm' || key == 'ArrowRight'
+        || key == 'ArrowLeft'
+        || key == 'ArrowUp'
+        || key == 'ArrowDown'
+        || key == 'PageUp'
+        || key == 'PageDown'
+        || key == 't'
+        || key == 'T' ? changeThemeByKey() : null;
+}
+
+function changeThemeByKey() {
+    if (themeWork) {
+        themeWork = false;
+        releseTheme();
+        changeTheme();
     }
 }
 
-if (window.innerHeight < parseInt(getComputedStyle(document.body).height)) {
-    document.body.style.setProperty('min-height', `${window.innerHeight}px`);
-}// this condition will fix the body height for some mobile devices.
+function releseTheme() {
+    setTimeout(() => {
+        themeWork = true
+    }, 250)
+}
+
+function endClickBtn(e) {
+    let key = e.key;
+    key == '=' ? key = 'Enter' : key;
+    let ele = document.getElementById(`${key}`);
+    if (ele) ele.classList.remove('clicked');
+}
+
+function mouseClick(ele) {
+    if (ele.tagName == 'BUTTON' && ele.id != 'themeSwitcher') {
+        ele.classList.add('clicked');
+    }
+}
+
+// LOGIC

@@ -1,0 +1,28 @@
+{
+    "lang": "en-us",
+    "name": "Calculator By Philip Droubi",
+    "short_name": "Calculator",
+    "description": "A frontend mentor Calculator challenge done by Philip Droubi",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#3a4764",
+    "theme_color": "#232c43",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/images/calc-128.png",
+            "type": "image/png",
+            "sizes": "128x128"
+        },
+        {
+            "src": "/images/calc-192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "/images/calc-512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ]
+}
