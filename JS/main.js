@@ -122,7 +122,6 @@ function changeTheme() {
 window.addEventListener('keydown', e => clickBtn(e));
 window.addEventListener('keyup', e => endClickBtn(e));
 // window.addEventListener('touchstart', e => testTouch(e));
-// window.addEventListener('click', e => clickBtn(e));
 // window.addEventListener('touchend', e => endMouseClick(e));
 // window.addEventListener('touchcancel', e => endMouseClick(e));
 window.addEventListener('mousedown', e => mouseClick(e.target));
@@ -132,29 +131,20 @@ window.addEventListener('mouseout', e => e.target.classList.remove('clicked'));
 
 function clickBtn(e) {
     let key = e.key;
-    console.log(key);
     if (acceptedBtns.includes(key)) {
-        if (!soundOn) {
-            if (herf == 'philip-droubi.github.io') {
-                btnSound = new Audio('/calculator-app-main/sounds/click.mp3');
-            } else
-                btnSound = new Audio('../sounds/click.mp3');
-            btnSound.play();
-            soundOn = true;
-        }
+        playSound();
         key == '=' ? key = 'Enter' : key;
         let ele = document.getElementById(`${key}`);
         if (ele) ele.classList.add('clicked');
-        key == 'm' || key == 'ArrowRight'
-            || key == 'ArrowLeft'
-            || key == 'ArrowUp'
-            || key == 'ArrowDown'
-            || key == 'PageUp'
-            || key == 'PageDown'
-            || key == 't'
-            || key == 'T' ? changeThemeByKey() : null;
-        // document.querySelector('.info').innerHTML = 4545;
     }
+    key == 'm' || key == 'ArrowRight'
+        || key == 'ArrowLeft'
+        || key == 'ArrowUp'
+        || key == 'ArrowDown'
+        || key == 'PageUp'
+        || key == 'PageDown'
+        || key == 't'
+        || key == 'T' ? changeThemeByKey() : null;
 }
 
 function changeThemeByKey() {
@@ -181,29 +171,10 @@ function endClickBtn(e) {
 
 function mouseClick(ele) {
     if (ele.tagName == 'BUTTON' && ele.id != 'themeSwitcher') {
-        // if (!window.matchMedia("(pointer: coarse)").matches) {
         ele.classList.add('clicked');
-        if (herf == 'philip-droubi.github.io') {
-            btnSound = new Audio('/calculator-app-main/sounds/click.mp3');
-        } else
-            btnSound = new Audio('../sounds/click.mp3');
-        btnSound.play();
-        // }
+        playSound();
     }
 }
-
-// function touchClick(ele) {
-//     if (ele.tagName == 'BUTTON' && ele.id != 'themeSwitcher') {
-//         if (window.matchMedia("(pointer: coarse)").matches) {
-//             ele.classList.add('clicked');
-//             if (herf == 'philip-droubi.github.io') {
-//                 btnSound = new Audio('/calculator-app-main/sounds/click.mp3');
-//             } else
-//                 btnSound = new Audio('../sounds/click.mp3');
-//             btnSound.play();
-//         }
-//     }
-// }
 
 function endMouseClick(ele) {
     if (window.matchMedia("(pointer: coarse)").matches) {
@@ -213,7 +184,33 @@ function endMouseClick(ele) {
     } else {
         ele.classList.remove('clicked');
     }
+    soundOn = false;
 }
 
+function UrlExists(url) {
+    var http = new XMLHttpRequest();
+    http.open('HEAD', url, false);
+    http.send();
+    if (http.status != 404)
+        return true;
+    else
+        return false;
+}
+
+function playSound() {
+    if (!soundOn) {
+        let url;
+        if (herf == 'philip-droubi.github.io') {
+            url = '/calculator-app-main/sounds/click.mp3'
+            if (UrlExists(url)) {
+                btnSound = new Audio(url);
+            }
+        } else {
+            btnSound = new Audio('../sounds/click.mp3');
+        }
+        btnSound.play();
+        soundOn = true;
+    }
+}
 
 // LOGIC

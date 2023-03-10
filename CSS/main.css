@@ -1,4 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@600;900&family=Fraunces:opsz,wght@9..144,700;9..144,800;9..144,900&family=Hanken+Grotesk:wght@500;600;700;800;900&family=League+Spartan:wght@500;700&family=Manrope:wght@500;700&family=Overpass:wght@400;700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@600;900&family=Fraunces:opsz,wght@9..144,700;9..144,800;9..144,900&family=Hanken+Grotesk:wght@500;600;700;800;900&family=League+Spartan:wght@500;700&family=Manrope:wght@500;700&family=Overpass:wght@400;700&display=swap'); */
+
+@font-face {
+    font-family: 'league_spartanthin700';
+    src:
+        url('../Fonts/LeagueSpartan-Bold.ttf');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'league_spartanthin500';
+    src:
+        url('../Fonts/LeagueSpartan-Medium.ttf');
+    font-weight: 500;
+}
 
 :root {
     /* Theme 1 */
@@ -87,7 +101,8 @@ button {
     font-size: var(--font-size);
     font-weight: 700;
     background-color: transparent;
-    font-family: 'League Spartan', sans-serif;
+    /* font-family: 'League Spartan', sans-serif; */
+    font-family: 'league_spartanthin700', sans-serif;
 }
 
 a {
@@ -114,7 +129,7 @@ body {
     background-color: var(--background-color);
     min-height: 100vh;
     font-size: var(--font-size);
-    font-family: 'League Spartan', sans-serif;
+    font-family: 'league_spartanthin700', sans-serif;
     font-weight: 700;
     padding: 20px 4px;
 }
@@ -138,6 +153,7 @@ nav {
     align-items: center;
     gap: 28px;
     text-transform: uppercase;
+    font-family: 'league_spartanthin500', sans-serif;
     font-weight: 500;
     font-size: 13px;
 }
