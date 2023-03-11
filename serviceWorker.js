@@ -9,6 +9,7 @@ const assets = [
     `${link}/Fonts/LeagueSpartan-Bold.ttf`,
     `${link}/Fonts/LeagueSpartan-Medium.ttf`,
     `${link}/sounds/click.mp3`,
+    `${link}/sounds`,
 ];
 
 self.addEventListener("install", installEvent => {
