@@ -5,12 +5,14 @@ const assets = [
     `${link}/index.html`,
     `${link}/CSS/main.css`,
     `${link}/JS/main.js`,
+    `${link}/JS/helpers.js`,
+    `${link}/JS/logic.js`,
+    `${link}/JS/themeController.js`,
     `${link}/images/favicon-32x32.png`,
     `${link}/images/copy.svg`,
     `${link}/Fonts/LeagueSpartan-Bold.ttf`,
     `${link}/Fonts/LeagueSpartan-Medium.ttf`,
     `${link}/sounds/click.mp3`,
-    `${link}/sounds/`,
 ];
 
 self.addEventListener("install", installEvent => {
