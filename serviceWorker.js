@@ -6,10 +6,11 @@ const assets = [
     `${link}/CSS/main.css`,
     `${link}/JS/main.js`,
     `${link}/images/favicon-32x32.png`,
+    `${link}/images/copy.svg`,
     `${link}/Fonts/LeagueSpartan-Bold.ttf`,
     `${link}/Fonts/LeagueSpartan-Medium.ttf`,
     `${link}/sounds/click.mp3`,
-    `${link}/sounds`,
+    `${link}/sounds/`,
 ];
 
 self.addEventListener("install", installEvent => {

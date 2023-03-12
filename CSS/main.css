@@ -135,6 +135,7 @@ body {
 main {
     width: 540px;
     margin: 0 auto;
+    position: relative;
 }
 
 nav {
@@ -201,6 +202,7 @@ nav {
 }
 
 .screen {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -211,16 +213,31 @@ nav {
     padding-right: 32px;
     padding-left: 32px;
     margin-bottom: 24px;
-    user-select: all !important;
+}
+
+.ctc {
+    position: absolute;
+    top: 4px;
+    left: 10px;
+    height: fit-content;
+    width: fit-content;
+    border-radius: 4px;
+    overflow: hidden;
+    filter: invert();
+}
+
+.ctc img {
+    width: 28px;
+    height: 34px;
 }
 
 .screen .output {
     color: var(--nav-screen-text-color);
+    white-space: nowrap;
     font-size: 55px;
     letter-spacing: -0.4px;
     overflow-x: hidden;
     margin-top: 5px;
-    user-select: all !important;
 }
 
 .screen .output::-webkit-scrollbar {
@@ -304,6 +321,26 @@ nav {
 
 .calculatorBody ul .mult button {
     text-transform: lowercase;
+}
+
+.preventInput {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'league_spartanthin500', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    max-width: 300px;
+    width: 100%;
+    background-color: #222;
+    color: var(--White);
+    border-radius: 20px;
+    text-align: center;
+    padding: 10px 20px;
+    opacity: 0;
+    z-index: -1;
+    transition: 0.2s;
 }
 
 .clicked {
