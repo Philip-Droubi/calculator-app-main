@@ -468,3 +468,9 @@ footer {
         max-width: none;
     }
 }
+
+@media (width:1440px) {
+    main {
+        transform: translateY(65px);
+    }
+}
