@@ -124,9 +124,16 @@ function changeTheme() {
 
 //Copy To ClipBoard
 
+let msg = document.querySelector('.copyMsg');
+let msgTimer;
 function copyToClipBoard() {
     let copyText = screenOutput.textContent;
     navigator.clipboard.writeText(copyText);
+    msg.style.opacity = '0.94';
+    clearTimeout(msgTimer);
+    msgTimer = setTimeout(() => {
+        msg.style.opacity = '0';
+    }, 1500)
 }
 
 //React with keypad

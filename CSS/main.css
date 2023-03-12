@@ -231,6 +231,21 @@ nav {
     height: 34px;
 }
 
+.copyMsg {
+    position: absolute;
+    top: 6px;
+    left: 40px;
+    opacity: 0;
+    color: var(--nav-screen-text-color);
+    font-family: 'league_spartanthin500', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    background-color: var(--background-color);
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: 0.2s;
+}
+
 .screen .output {
     color: var(--nav-screen-text-color);
     white-space: nowrap;
