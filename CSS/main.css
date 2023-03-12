@@ -471,6 +471,6 @@ footer {
 
 @media (width:1440px) {
     main {
-        transform: translateY(65px);
+        transform: translateY(22px);
     }
 }
